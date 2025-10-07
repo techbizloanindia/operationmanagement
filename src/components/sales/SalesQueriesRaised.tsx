@@ -344,7 +344,10 @@ export default function SalesQueriesRaised({ searchAppNo }: SalesQueriesRaisedPr
           showSuccessMessage(`New message for ${update.appNo}! 💬`);
           
           if (selectedQuery && selectedQuery.appNo === update.appNo && currentView === 'chat') {
-            loadChatMessages(selectedQuery.id);
+            // Use the correct queryId for cross-team compatibility
+            const queryIdToUse = (selectedQuery as any).queryId || selectedQuery.id;
+            console.log(`💬 Sales: Reloading messages for queryId: ${queryIdToUse} due to real-time update`);
+            loadChatMessages(queryIdToUse);
           }
           
           setNewQueryCount(prev => prev + 1);
@@ -507,7 +510,8 @@ export default function SalesQueriesRaised({ searchAppNo }: SalesQueriesRaisedPr
   const handleSelectQuery = (query: Query) => {
     setSelectedQuery(query);
     setCurrentView('chat');
-    loadChatMessages(query.id);
+    const queryIdToUse = (query as any).queryId || query.id;
+    loadChatMessages(queryIdToUse);
   };
 
   const handleBackToApplications = () => {
@@ -875,18 +879,19 @@ export default function SalesQueriesRaised({ searchAppNo }: SalesQueriesRaisedPr
   };
 
   // Load chat messages
-  const loadChatMessages = async (queryId: number) => {
+  // Load chat messages - ISOLATED LIKE CREDIT
+  const loadChatMessages = async (queryId: string | number) => {
     try {
-      console.log(`🔄 Loading chat messages for query ${queryId}`);
+      console.log(`🔄 SALES: Loading chat messages for query ${queryId}`);
       
       const response = await fetch(`/api/queries/${queryId}/chat`);
       const result = await response.json();
       
       if (result.success) {
         const messages = result.data || [];
-        console.log(`📬 Loaded ${messages.length} messages for query ${queryId}`);
+        console.log(`📬 SALES: Loaded ${messages.length} messages for query ${queryId}`);
         
-        // Transform messages to include proper flags for ChatDisplay
+        // Transform messages to include proper flags for ChatDisplay - SAME AS CREDIT
         const transformedMessages = messages.map((msg: any) => ({
           ...msg,
           isQuery: msg.team === 'Operations' || msg.senderRole === 'operations',
@@ -904,21 +909,23 @@ export default function SalesQueriesRaised({ searchAppNo }: SalesQueriesRaisedPr
           messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        console.error('Failed to load chat messages:', result.error);
+        console.error('SALES: Failed to load chat messages:', result.error);
         showSuccessMessage('❌ Failed to load chat messages');
       }
     } catch (error) {
-      console.error('Error loading chat messages:', error);
+      console.error('SALES: Error loading chat messages:', error);
       showSuccessMessage('❌ Error loading chat messages');
     }
   };
 
-  // Send message
+  // Send message - ISOLATED LIKE CREDIT
   const handleSendMessage = async () => {
     if (!newMessage.trim() || !selectedQuery) return;
 
+    const queryId = (selectedQuery as any).queryId || selectedQuery.id;
+
     try {
-      const response = await fetch(`/api/queries/${selectedQuery.id}/chat`, {
+      const response = await fetch(`/api/queries/${queryId}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -931,7 +938,7 @@ export default function SalesQueriesRaised({ searchAppNo }: SalesQueriesRaisedPr
 
       if (response.ok) {
         setNewMessage('');
-        loadChatMessages(selectedQuery.id);
+        loadChatMessages(queryId);
         showSuccessMessage('Message sent! 📤');
       } else {
         const errorData = await response.json();
