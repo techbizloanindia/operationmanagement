@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { FaUpload, FaTrash, FaFile, FaClock, FaCheckCircle, FaExclamationCircle, FaTimes } from 'react-icons/fa';
 
 interface UploadResult {
@@ -40,7 +40,7 @@ interface UploadedFile {
   errorMessage?: string;
 }
 
-const BulkUploadTab = () => {
+const BulkUploadTab = React.memo(() => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -693,6 +693,8 @@ const BulkUploadTab = () => {
       </div>
     </div>
   );
-};
+});
+
+BulkUploadTab.displayName = 'BulkUploadTab';
 
 export default BulkUploadTab; 

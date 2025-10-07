@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { UserRole } from '@/types/shared';
 
 // Notification component
@@ -92,7 +92,7 @@ interface DeleteModalData {
   user: User | null;
 }
 
-const UserCreationTab = () => {
+const UserCreationTab = React.memo(() => {
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -170,7 +170,8 @@ const UserCreationTab = () => {
     setFilteredUsers(filtered);
   }, [users, searchTerm, selectedRole]);
 
-  const fetchUsers = async () => {
+  // Memoized API call functions
+  const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch('/api/users');
@@ -186,9 +187,9 @@ const UserCreationTab = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const fetchBranches = async () => {
+  const fetchBranches = useCallback(async () => {
     try {
       const response = await fetch('/api/branches?isActive=true');
       const result = await response.json();
@@ -198,10 +199,13 @@ const UserCreationTab = () => {
     } catch (error) {
       console.error('Error fetching branches:', error);
     }
-  };
+  }, []);
 
-  // Get active branch names for the UI (ensure uniqueness)
-  const activeBranchNames = [...new Set(branches.filter(branch => branch.isActive).map(branch => branch.branchName))];
+  // Memoize active branch names calculation
+  const activeBranchNames = useMemo(() => 
+    [...new Set(branches.filter(branch => branch.isActive).map(branch => branch.branchName))],
+    [branches]
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -1747,6 +1751,8 @@ const UserCreationTab = () => {
       )}
     </div>
   );
-};
+});
+
+UserCreationTab.displayName = 'UserCreationTab';
 
 export default UserCreationTab; 

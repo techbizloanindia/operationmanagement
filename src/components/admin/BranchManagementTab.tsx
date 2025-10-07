@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { CustomNotification, useNotification } from '../shared/CustomNotification';
 
 
@@ -14,7 +14,7 @@ interface Branch {
   createdAt: Date;
 }
 
-export default function BranchManagementTab() {
+const BranchManagementTab = React.memo(() => {
   const [branches, setBranches] = useState<Branch[]>([]);
   const [loading, setLoading] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -666,4 +666,8 @@ export default function BranchManagementTab() {
       </div>
     </>
   );
-} 
+});
+
+BranchManagementTab.displayName = 'BranchManagementTab';
+
+export default BranchManagementTab; 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
 interface SanctionedApplication {
   _id: string;
@@ -14,7 +14,7 @@ interface SanctionedApplication {
   salesExec?: string;
 }
 
-const SanctionedCasesTab = () => {
+const SanctionedCasesTab = React.memo(() => {
   const [sanctionedApps, setSanctionedApps] = useState<SanctionedApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -457,6 +457,8 @@ const SanctionedCasesTab = () => {
       )}
     </div>
   );
-};
+});
+
+SanctionedCasesTab.displayName = 'SanctionedCasesTab';
 
 export default SanctionedCasesTab;
