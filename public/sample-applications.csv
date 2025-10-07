@@ -1,0 +1,11 @@
+App.No,Name,BranchName,TaskName,AppDate,LoanNo,Amount,Email,Login,SalesExec,Asset Type,Sanction Amount
+BL001,John Doe,Mumbai Central Branch,Sanctioned,2024-01-15,LN001,500000,john.doe@email.com,EMP001,Rajesh Kumar,Home Loan,450000
+BL002,Jane Smith,Delhi Main Branch,Documentation Complete,2024-01-16,LN002,300000,jane.smith@email.com,EMP002,Priya Sharma,Personal Loan,280000
+BL003,Bob Wilson,Pune West Branch,Final Approval,2024-01-17,LN003,750000,bob.wilson@email.com,EMP003,Amit Singh,Car Loan,700000
+BL004,Alice Johnson,Bangalore IT Branch,Approved,2024-01-18,LN004,1000000,alice.johnson@email.com,EMP004,Sunita Patel,Business Loan,950000
+BL005,David Brown,Chennai Port Branch,Disbursed,2024-01-19,LN005,400000,david.brown@email.com,EMP005,Vikram Reddy,Home Loan,380000
+BL006,Sarah Davis,Kolkata Central Branch,Ready for Disbursement,2024-01-20,LN006,250000,sarah.davis@email.com,EMP006,Arjun Verma,Personal Loan,240000
+BL007,Michael Miller,Hyderabad Tech Branch,Loan Sanctioned,2024-01-21,LN007,600000,michael.miller@email.com,EMP007,Deepika Jain,Education Loan,580000
+BL008,Emily Garcia,Ahmedabad Branch,Completed,2024-01-22,LN008,350000,emily.garcia@email.com,EMP008,Rohit Gupta,Two Wheeler Loan,320000
+BL009,James Rodriguez,Jaipur Branch,Sanctioned Loan,2024-01-23,LN009,800000,james.rodriguez@email.com,EMP009,Neha Agarwal,Gold Loan,750000
+BL010,Maria Martinez,Lucknow Branch,Disbursement,2024-01-24,LN010,450000,maria.martinez@email.com,EMP010,Karan Malhotra,Personal Loan,420000 

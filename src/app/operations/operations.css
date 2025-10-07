@@ -1,0 +1,686 @@
+/* Operations Dashboard - Modern Responsive Styles */
+
+/* Enhanced Tab Styles */
+.tab-active {
+  border-bottom-color: #0891b2; /* cyan-600 */
+  color: #0891b2;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+/* Enhanced Scrollbar Styles */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Scrollbar for Better UX */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  border-radius: 10px;
+  border: 2px solid #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+/* Enhanced Accordion Animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-content.open {
+  max-height: 2000px;
+  transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced Animation Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* CRITICAL: Enhanced Text Visibility - ALL TEXT MUST BE READABLE */
+input, 
+textarea, 
+select {
+  color: #0f172a !important; /* slate-900 - darkest text */
+  background-color: #ffffff !important; /* pure white background */
+  font-weight: 600 !important; /* semi-bold for better readability */
+  font-size: 0.95rem !important; /* slightly larger text */
+  line-height: 1.5 !important; /* better line spacing */
+  border: 2px solid #e2e8f0 !important; /* visible border */
+  border-radius: 0.75rem !important; /* rounded corners */
+  padding: 0.75rem 1rem !important; /* adequate padding */
+  transition: all 0.2s ease-in-out !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  border-color: #3b82f6 !important; /* blue border on focus */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+input::placeholder, 
+textarea::placeholder {
+  color: #475569 !important; /* slate-600 - visible but distinct */
+  opacity: 0.8 !important;
+  font-weight: 600 !important; /* font-semibold */
+}
+
+/* Enhanced Text Visibility for All Components */
+.text-enhanced-visibility {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Button Text Enhancement */
+button {
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+}
+
+button:not(.btn-ghost):not(.btn-outline) {
+  color: #ffffff !important;
+}
+
+/* Card and Modal Text Enhancement */
+.card-text, .modal-text, .table-text {
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+
+/* Search inputs - ENHANCED VISIBILITY */
+input[type="text"][placeholder*="Search"],
+input[type="text"][placeholder*="Enter App"],
+input[type="text"][placeholder*="application number"] {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  min-height: 2.75rem !important;
+}
+
+input[type="text"][placeholder*="Search"]::placeholder,
+input[type="text"][placeholder*="Enter App"]::placeholder,
+input[type="text"][placeholder*="application number"]::placeholder {
+  color: #475569 !important;
+  opacity: 0.8 !important;
+  font-weight: 600 !important;
+}
+
+/* Query textareas - ENHANCED VISIBILITY */
+textarea[placeholder*="Add a remark"],
+textarea[placeholder*="Enter query"],
+textarea[placeholder*="Type your"],
+textarea {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  min-height: 4rem !important;
+  resize: vertical !important;
+}
+
+/* RESPONSIVE DESIGN ENHANCEMENTS */
+
+/* Mobile First Approach */
+@media (max-width: 640px) {
+  /* Mobile Text Scaling */
+  body, input, textarea, select, button {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  /* Mobile Input Enhancement */
+  input, textarea, select {
+    min-height: 3rem !important;
+    font-size: 16px !important;
+    padding: 1rem !important;
+  }
+  
+  /* Mobile Button Enhancement */
+  button {
+    min-height: 2.75rem !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Mobile Card Spacing */
+  .card-mobile {
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+  }
+  
+  /* Mobile Table Enhancement */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-responsive table {
+    min-width: 100%;
+    font-size: 0.875rem;
+  }
+  
+  .table-responsive td, .table-responsive th {
+    padding: 0.75rem 0.5rem !important;
+    white-space: nowrap;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 641px) and (max-width: 1024px) {
+  input, textarea, select {
+    font-size: 15px !important;
+    min-height: 2.75rem !important;
+  }
+  
+  button {
+    font-size: 14px !important;
+    min-height: 2.5rem !important;
+  }
+}
+
+/* Desktop Optimization */
+@media (min-width: 1025px) {
+  input, textarea, select {
+    font-size: 14px !important;
+    min-height: 2.5rem !important;
+  }
+  
+  button {
+    font-size: 14px !important;
+    min-height: 2.25rem !important;
+  }
+}
+
+/* High Contrast Mode for Better Visibility */
+@media (prefers-contrast: high) {
+  input, textarea, select {
+    border-width: 3px !important;
+    border-color: #1e293b !important;
+  }
+  
+  button {
+    border-width: 2px !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  input, textarea, select {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #475569 !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  input, textarea, select {
+    border: 1px solid #000000 !important;
+    background: transparent !important;
+    color: #000000 !important;
+  }
+}
+
+/* Enhanced Focus States for Accessibility */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}
+textarea[placeholder*="Enter your remarks"] {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+  border: 2px solid #d1d5db !important;
+}
+
+textarea[placeholder*="Add a remark"]::placeholder,
+textarea[placeholder*="Enter query"]::placeholder,
+textarea[placeholder*="Type your"]::placeholder,
+textarea[placeholder*="Enter your remarks"]::placeholder {
+  color: #000000 !important;
+  opacity: 0.8 !important;
+  font-weight: 600 !important;
+}
+
+/* Select dropdowns - ALL BLACK TEXT */
+select, 
+select option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .tab {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .tab i, .tab svg {
+    margin-right: 0.25rem;
+  }
+
+  /* Make table responsive on mobile */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Stack flex items on mobile */
+  .flex-wrap-mobile {
+    flex-wrap: wrap;
+  }
+
+  /* Adjust spacing on mobile */
+  .space-y-mobile > * + * {
+    margin-top: 0.5rem;
+  }
+
+  /* Full width inputs on mobile */
+  .full-width-mobile {
+    width: 100%;
+  }
+}
+
+/* Hover effects */
+.query-block {
+  transition: all 0.2s ease;
+}
+
+.query-block:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Button styles */
+button.cyan-button {
+  background-color: #0891b2;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+button.cyan-button:hover {
+  background-color: #0e7490;
+}
+
+/* Table styles */
+.operations-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.operations-table th {
+  background-color: #f3f4f6;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #d1d5db;
+}
+
+.operations-table td {
+  padding: 1rem;
+  vertical-align: top;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827 !important;
+  font-weight: 600;
+}
+
+.operations-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Form styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: #f9fafb;
+  font-size: 0.875rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #1f2937 !important;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0891b2;
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.badge-yellow {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 700;
+}
+
+.badge-green {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 700;
+}
+
+.badge-cyan {
+  background-color: #cffafe;
+  color: #155e75;
+  font-weight: 700;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin-top: 0.25rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+  .mobile-stack {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .mobile-stack > * {
+    width: 100%;
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-stack > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+  }
+
+  .mobile-p-2 {
+    padding: 0.5rem !important;
+  }
+
+  .mobile-mt-2 {
+    margin-top: 0.5rem !important;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+/* GLOBAL TEXT BLACK ENFORCEMENT - HIGHEST PRIORITY */
+/* All labels */
+label,
+.form-label,
+[for] {
+  color: #000000 !important; /* pure black */
+  font-weight: 700 !important; /* font-bold */
+}
+
+/* All input types */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* All text within modals */
+.fixed input,
+.fixed textarea,
+.fixed select,
+.modal input,
+.modal textarea,
+.modal select {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* All placeholders black */
+::placeholder {
+  color: #000000 !important;
+  opacity: 0.7 !important;
+  font-weight: 600 !important;
+}
+
+/* Form elements in any container */
+form input,
+form textarea,
+form select,
+form label {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* Specific component overrides */
+.bg-white input,
+.bg-white textarea,
+.bg-white select {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Ensure all text is black in React components */
+input[class*="text-"],
+textarea[class*="text-"],
+select[class*="text-"] {
+  color: #000000 !important;
+}
+
+/* Override any gray text classes */
+.text-gray-900 {
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+.text-gray-800 {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+  font-weight: 600 !important;
+}
+
+.text-gray-500 {
+  color: #6b7280 !important;
+  font-weight: 600 !important;
+}
+
+/* Ensure table visibility */
+table {
+  color: #111827 !important;
+}
+
+table th {
+  color: #111827 !important;
+  font-weight: 700 !important;
+  background-color: #f3f4f6 !important;
+}
+
+table td {
+  color: #111827 !important;
+  font-weight: 600 !important;
+}
+
+/* Status badge enhancements */
+.bg-green-100 {
+  background-color: #d1fae5 !important;
+}
+
+.text-green-800 {
+  color: #065f46 !important;
+  font-weight: 700 !important;
+}
+
+.bg-yellow-100 {
+  background-color: #fef3c7 !important;
+}
+
+.text-yellow-800 {
+  color: #92400e !important;
+  font-weight: 700 !important;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe !important;
+}
+
+.text-blue-800 {
+  color: #1e40af !important;
+  font-weight: 700 !important;
+}
+
+.bg-purple-100 {
+  background-color: #ede9fe !important;
+}
+
+.text-purple-800 {
+  color: #5b21b6 !important;
+  font-weight: 700 !important;
+}
+
+.bg-orange-100 {
+  background-color: #fed7aa !important;
+}
+
+.text-orange-800 {
+  color: #9a3412 !important;
+  font-weight: 700 !important;
+}

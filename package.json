@@ -1,0 +1,75 @@
+{
+  "name": "ops-query",
+  "version": "2.0.0",
+  "description": "OpsQuery - Real-time Query Management System for Financial Institutions",
+  "author": "OpsQuery Development Team",
+  "license": "MIT",
+  "keywords": [
+    "query-management",
+    "financial-institutions",
+    "real-time-messaging",
+    "dashboard",
+    "workflow-management",
+    "next.js",
+    "typescript",
+    "mongodb"
+  ],
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "cross-env BUILDING=true NODE_OPTIONS=\"--max-old-space-size=1024\" next build",
+    "start": "node start-server.js",
+    "start:direct": "cross-env NODE_OPTIONS=\"--max-old-space-size=400 --optimize-for-size\" next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "optimize-logo": "node scripts/optimize-logo.js",
+    "prepare": "npm run type-check && npm run lint",
+    "production-build": "cross-env BUILDING=true NODE_OPTIONS=\"--max-old-space-size=1024\" npm run build",
+    "analyze": "cross-env BUILDING=true ANALYZE=true NODE_OPTIONS=\"--max-old-space-size=1024\" npm run build"
+  },
+  "engines": {
+    "node": "22.x",
+    "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.2",
+    "@types/papaparse": "^5.3.16",
+    "bcryptjs": "^3.0.2",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.3",
+    "lucide-react": "^0.544.0",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.18.3",
+    "multer": "^2.0.2",
+    "next": "15.5.4",
+    "papaparse": "^5.5.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@tanstack/react-query-devtools": "^5.90.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.36.0",
+    "eslint-config-next": "15.5.4",
+    "sharp": "^0.34.4",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.45.0"
+  },
+  "overrides": {
+    "node-domexception": "1.0.0"
+  }
+}

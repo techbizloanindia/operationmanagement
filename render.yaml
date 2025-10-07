@@ -1,0 +1,27 @@
+# Render deployment configuration for memory optimization
+
+# Build settings
+BUILD_COMMAND=npm run build
+
+# Start command with memory optimization
+START_COMMAND=npm start
+
+# Environment variables for memory optimization
+NODE_ENV=production
+NODE_OPTIONS=--max-old-space-size=400 --optimize-for-size --max-semi-space-size=16
+
+# Performance settings
+NEXT_TELEMETRY_DISABLED=1
+
+# MongoDB connection optimization
+# Set these in your Render dashboard:
+# MONGODB_CONNECTION_POOL_SIZE=5
+# MONGODB_SERVER_SELECTION_TIMEOUT=5000
+# MONGODB_SOCKET_TIMEOUT=45000
+
+# Memory monitoring
+MEMORY_MONITORING=true
+
+# File upload limits (adjust based on your needs)
+MAX_FILE_SIZE=5242880
+MAX_RECORDS_PER_UPLOAD=5000
